@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, send_from_directory, request, redirect, url_for
+from flask import Flask, render_template, send_from_directory, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -50,6 +50,8 @@ def insert():
         
         db.session.add(my_data)
         db.session.commit()
+
+        flash("Book inserted successfully!")
 
         return redirect(url_for("index"))
 
