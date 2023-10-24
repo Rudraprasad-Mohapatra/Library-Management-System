@@ -8,17 +8,17 @@ Library-Management-System using Flask and SQL .
 
 ## Installation
 
-1. Clone this repository: git clone https://github.com/yourusername/your-repo.git
+1. Clone this repository: `git clone https://github.com/yourusername/your-repo.git`
 
-2. Navigate to the project directory: cd your-repo
+2. Navigate to the project directory: `cd your-repo`
 
-3. Install required packages from `requirements.txt`: pip install -r requirements.txt
+3. Install required packages from `requirements.txt`: `pip install -r requirements.txt`
 
 
 
 ## Usage
 
-1. Start the Flask application : python app.py
+1. Start the Flask application : `python app.py`
 
 
 2. Access the application in your web browser by going to `http://localhost:5000`.
