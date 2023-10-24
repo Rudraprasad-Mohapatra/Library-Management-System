@@ -29,7 +29,26 @@ class books(db.Model):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    all_data = books.query.all()
+    return render_template("index.html", books=all_data)
+
+
+@app.route("/update", methods=["GET", "POST"])
+def update():
+
+    if request.method == "POST":
+        my_data = books.query.get(request.form.get('SERIAL_NO'))
+        print(my_data)
+        print(request.form)
+        my_data.BOOK_NAME = request.form["BOOK_NAME"]
+        my_data.AUTHOR_NAME = request.form["AUTHOR_NAME"]
+        my_data.RATING = request.form["RATING"]
+        my_data.Borrower_ID = request.form["Borrower_ID"]
+
+    db.session.commit()
+    flash("Employee updated successfully")
+
+    return redirect(url_for('index'))
 
 
 @app.route('/favicon.ico')
@@ -46,8 +65,8 @@ def insert():
         RATING = request.form['RATING']
         Borrower_ID = request.form['Borrower_ID']
 
-        my_data = books(BOOK_NAME,AUTHOR_NAME,RATING,Borrower_ID)
-        
+        my_data = books(BOOK_NAME, AUTHOR_NAME, RATING, Borrower_ID)
+
         db.session.add(my_data)
         db.session.commit()
 
