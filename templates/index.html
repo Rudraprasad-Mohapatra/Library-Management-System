@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% include "header.html" %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col md-12">
+            <div class="jumbotron p-3">
+                <h2>Manage <b>Books</b> <button type="button" class="btn btn-success float-right" data-toggle="modal"
+                        data-target="#mymodal">Add New Book</button></h2>
+
+
+                <table class="table table-hover table-dark">
+                    <tr>
+                        <th>BOOK_NAME</th>
+                        <th>AUTHOR_NAME</th>
+                        <th>SERIAL_NO</th>
+                        <th>RATING</th>
+                        <th>Borrower_ID</th>
+                        <th>Action</th>
+                    </tr>
+
+                    <tr>
+                        <td>01</td>
+                        <td>Bhagvat Gita</td>
+                        <td>Vyasadeva</td>
+                        <td>05</td>
+                        <td>5502</td>
+                        <td>
+                            <a href="" class="btn btn-warning btn-xs" data-toggle="modal"
+                                data-target="#modaledit">Edit</a>
+                            <a href="" class="btn btn-danger btn-xs"
+                                onclick="return confirm('Are you sure To Delete')">Delete</a>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <!-- Modal Add Book -->
+
+            <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Book Details</h5>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+
+                        </div>
+
+                        <form action="{{url_for('insert')}}" method="POST">
+
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="BOOK_NAME" class="col-form-label">BOOK_NAME:</label>
+                                    <input type="text" class="form-control" id="BOOK_NAME" name="BOOK_NAME"
+                                        required="1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="AUTHOR_NAME" class="col-form-label">AUTHOR_NAME:</label>
+                                    <input type="text" class="form-control" id="AUTHOR_NAME" name="AUTHOR_NAME"
+                                        required="1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="RATING" class="col-form-label">RATING:</label>
+                                    <input type="text" class="form-control" id="RATING" name="RATING">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Borrower_ID" class="col-form-label">Borrower_ID:</label>
+                                    <input type="number" class="form-control" id="Borrower_ID" name="Borrower_ID">
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer form-group">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+                                <button type="submit" class="btn btn-primary">Add Book</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Edit Book -->
+            <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Book Details</h5>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+
+                        </div>
+
+                        <form action="" method="POST">
+
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="BOOK_NAME" class="col-form-label">BOOK_NAME:</label>
+                                    <input type="text" class="form-control" id="BOOK_NAME" name="BOOK_NAME"
+                                    required="1"
+                                    value="Bhagvad Gita">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="AUTHOR_NAME" class="col-form-label">AUTHOR_NAME:</label>
+                                    <input type="text" class="form-control" id="AUTHOR_NAME" name="AUTHOR_NAME"
+                                    required="1"
+                                    value="Vyasa Deva">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="RATING" class="col-form-label">RATING:</label>
+                                    <input type="number" class="form-control" id="RATING" name="RATING"
+                                    min="1" 
+                                    max="10"
+                                    value="10">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Borrower_ID" class="col-form-label">Borrower_ID:</label>
+                                    <input type="number" class="form-control" id="Borrower_ID" name="Borrower_ID"
+                                    value="5503">
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer form-group">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
