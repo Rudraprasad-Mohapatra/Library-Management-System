@@ -26,13 +26,37 @@ class books(db.Model):
         self.RATING = RATING
         self.Borrower_ID = Borrower_ID
 
-
+# Reading Data from Database
 @app.route("/")
 def index():
     all_data = books.query.all()
     return render_template("index.html", books=all_data)
 
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/x-icon')
+
+# Create a new record in Database
+@app.route('/insert', methods=['POST'])
+def insert():
+
+    if request.method == 'POST':
+        BOOK_NAME = request.form['BOOK_NAME']
+        AUTHOR_NAME = request.form['AUTHOR_NAME']
+        RATING = request.form['RATING']
+        Borrower_ID = request.form['Borrower_ID']
+
+        my_data = books(BOOK_NAME, AUTHOR_NAME, RATING, Borrower_ID)
+
+        db.session.add(my_data)
+        db.session.commit()
+
+        flash("Book inserted successfully!")
+
+        return redirect(url_for("index"))
+
+# Update the existing record in the database
 @app.route("/update", methods=["GET", "POST"])
 def update():
 
@@ -51,28 +75,15 @@ def update():
     return redirect(url_for('index'))
 
 
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/x-icon')
+# Delete the existing record in the Database
+@app.route("/delete/<id>/", methods = ["GET", "POST"])
+def delete(id):
+    my_data = books.query.get(id)
+    db.session.delete(my_data)
+    db.session.commit()
 
-
-@app.route('/insert', methods=['POST'])
-def insert():
-
-    if request.method == 'POST':
-        BOOK_NAME = request.form['BOOK_NAME']
-        AUTHOR_NAME = request.form['AUTHOR_NAME']
-        RATING = request.form['RATING']
-        Borrower_ID = request.form['Borrower_ID']
-
-        my_data = books(BOOK_NAME, AUTHOR_NAME, RATING, Borrower_ID)
-
-        db.session.add(my_data)
-        db.session.commit()
-
-        flash("Book inserted successfully!")
-
-        return redirect(url_for("index"))
+    flash("Book deleted successfully")
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
