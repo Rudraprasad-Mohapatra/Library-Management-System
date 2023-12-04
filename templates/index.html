@@ -57,63 +57,6 @@
                     </tr>
 
 
-
-
-
-                    <!-- Modal Add Book -->
-
-                    <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Add Book Details</h5>
-
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-
-                                </div>
-
-                                <form action="{{url_for('insert')}}" method="POST">
-
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="BOOK_NAME" class="col-form-label">BOOK_NAME:</label>
-                                            <input type="text" class="form-control" id="BOOK_NAME" name="BOOK_NAME"
-                                                required="1">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="AUTHOR_NAME" class="col-form-label">AUTHOR_NAME:</label>
-                                            <input type="text" class="form-control" id="AUTHOR_NAME" name="AUTHOR_NAME"
-                                                required="1">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="RATING" class="col-form-label">RATING:</label>
-                                            <input type="text" class="form-control" id="RATING" name="RATING">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="Borrower_ID" class="col-form-label">Borrower_ID:</label>
-                                            <input type="number" class="form-control" id="Borrower_ID"
-                                                name="Borrower_ID">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="modal-footer form-group">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Dismiss</button>
-                                        <button type="submit" class="btn btn-primary">Add Book</button>
-                                    </div>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Modal Edit Book -->
                     <div class="modal fade" id="modaledit{{row.SERIAL_NO}}" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -178,6 +121,60 @@
 
             </div>
 
+        </div>
+    </div>
+</div>
+
+<!-- Modal Add Book -->
+
+<div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Book Details</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+
+            <form action="{{url_for('insert')}}" method="POST">
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="BOOK_NAME" class="col-form-label">BOOK_NAME:</label>
+                        <input type="text" class="form-control" id="BOOK_NAME" name="BOOK_NAME"
+                            required="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="AUTHOR_NAME" class="col-form-label">AUTHOR_NAME:</label>
+                        <input type="text" class="form-control" id="AUTHOR_NAME" name="AUTHOR_NAME"
+                            required="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="RATING" class="col-form-label">RATING:</label>
+                        <input type="text" class="form-control" id="RATING" name="RATING">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Borrower_ID" class="col-form-label">Borrower_ID:</label>
+                        <input type="number" class="form-control" id="Borrower_ID"
+                            name="Borrower_ID">
+                    </div>
+
+                </div>
+
+                <div class="modal-footer form-group">
+                    <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Dismiss</button>
+                    <button type="submit" class="btn btn-primary">Add Book</button>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>

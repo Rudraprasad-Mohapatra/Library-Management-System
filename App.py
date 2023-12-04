@@ -86,5 +86,8 @@ def delete(id):
     return redirect(url_for("index"))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    with app.app_context():
+        # Create the database tables before running the application
+        db.create_all()
     app.run(debug=True)
